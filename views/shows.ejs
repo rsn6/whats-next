@@ -1,0 +1,31 @@
+<% include ./partials/header %>
+
+<div id="mobileTitle">
+	<div id="episode">
+		<h1>My Shows</h1>
+	</div>
+
+	<% for(var i = 0; i < data.length; i++) { %>
+		<div id="episode" class="ui raised segment">
+			<center><h1><%= data[i].seriesName %></h1></center>
+			<p>
+				<% if(data[i].banner === '') { %>
+					<img id="img" class="ui centered small image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png">
+				<% } else { %>
+					<img id="img" class="ui centered image" src="https://www.thetvdb.com/banners/<%= data[i].banner %>">
+				<% } %>
+			</p>
+			<% if (data[i].overview === null) { %>
+				<center><p>No description available</p></center>
+			<% } else { %>
+				<p><%= data[i].overview%></p>
+			<% } %>
+			<a id="infoBtn" class="ui floated basic blue button" href="/series/<%= data[i].id %>">More Info</a>
+			<form action="/shows" method="post">
+				<input type='hidden' name='seriesId' value='<%= data[i]["id"] %>'>
+				<button id="addBtn" class="ui red icon button"><i class="minus circle icon"></i> Remove </button>
+			</form>
+		</div>
+	<% } %>
+</div>
+<% include ./partials/footer %>

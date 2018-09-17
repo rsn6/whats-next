@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+	<title>What's Next?</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Quicksand:400" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.css">
+	<link rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+	
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.3/semantic.js"></script>
+	<script type="text/javascript" src="/scripts/menu.js"></script>
+</head>
+
+<body class="pushable">
+
+	<!-- Sidebar Menu -->
+	<div class="ui inverted vertical sidebar menu left">
+	    <div class="item">
+	    	<form action="/results" method="GET">
+	      		<div class="ui icon input">
+				    <input type="text" placeholder="Search..." name="search">
+				    <i class="search link icon"></i>
+	    		</div>
+	      	</form>
+	   </div>
+		<a href="/recent" class="item">Recent</a>
+		<a href="/help" class="item">Help</a>
+	    <% if(!currentUser){ %>
+		    <a href="/login" class="ui right item">Login</a>
+		    <a href="/register" class="ui right item">Sign Up</a>
+		<% } else { %>
+			<div class="ui right item">Signed in as : <%= currentUser.username %></div>
+	    	<a href="/logout" class="ui right item">Logout</a>
+		<% } %>
+	</div>
+	<div id="mainDiv" class="pusher">
+
+		<!-- Mobile Top Menu -->
+		<div id="sidebarMenu" class="ui container fluid inverted secondary menu">
+			<div class="ui fluid container">
+				<a class="toc item">
+					<i class="sidebar icon"></i>
+				</a>
+				<a href="/" class="right item">What's Next?</a>
+				<a href="/shows" class="item">My Shows</a>
+			</div>
+		</div>
+
+		<!-- Main Top Menu -->
+		<div class="ui inverted top menu">
+			<a href="/" class="header item"><i class="film icon"></i>What's Next?</a>
+			  <a href="/shows" class="item">My Shows</a>
+			  <a href="/recent" class="item">Recent</a>
+			  <a href ="/help" class="item">Help</a>
+			  <div class="right menu">
+			    <div class="item">
+			    	<form action="/results" method="GET">
+			      		<div class="ui icon input">
+						    <input type="text" placeholder="Search..." name="search">
+						    <i class="search link icon"></i>
+			    		</div>
+			      	</form>
+			   </div>
+			    <% if(!currentUser){ %>
+				    <a href="/login" class="ui item">Login</a>
+				    <a href="/register" class="ui item">Sign Up</a>
+				<% } else { %>
+					<div class="ui item">Signed in as : <%= currentUser.username %></div>
+			    	<a href="/logout" class="ui item">Logout</a>
+				<% } %>
+			</div>
+		</div>

@@ -1,0 +1,46 @@
+<% include ./partials/header %>
+
+<div id="mobileTitle">
+	<div id="episode">
+		<h1>Recently Aired Episodes</h1>
+	</div>
+
+	<% for(let i = 0; i < 30; i++) { %>
+		<div id="episode" class="ui raised segment">
+			<div class="ui compact message">
+				<div class="header"> Aired on : <%= data[i].firstAired %></div>
+				<p><%= data[i].network %> - <%= data[i].airsTime %></p>
+			</div>
+			<div id="epSeriesInfo">
+				<h4><%= data[i].seriesName %></h4>
+			</div>
+			<div id="seriesBanner">
+				<a href="/series/<%= data[i].seriesId %>">
+				<% if(data[i].banner === '') { %>
+					<img id="img" class="ui small image" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png"/>
+				<% } else { %>
+					<img id="img" class="ui medium image" src="https://www.thetvdb.com/banners/<%= data[i].banner %>"/>
+				<% } %>
+				</a>
+			</div>
+			
+			<% if(data[i].filename === ''){ %>
+				<div id="thumbnail"><img id="img" class="ui rounded medium image" src="/images/no_image.jpg"></div>
+			<% } else { %>
+				<div id="thumbnail"><img id="img" class="ui rounded medium image" src="https://www.thetvdb.com/banners/<%= data[i].filename %>"></div>
+			<% } %>
+
+			<strong><p>
+				S<%= data[i].airedSeason%>E<%= data[i].airedEpisodeNumber %> - <em><%= data[i].episodeName %></em>
+			</p></strong>
+
+			<% if(data[i].overview === null) { %>
+				<p><strong>No Description Available</strong></p>
+			<% } else { %>
+				<div id="overview"><%- data[i].overview %></div>
+			<% } %>
+		</div>
+	<% } %>
+</div>
+
+<% include ./partials/footer %>

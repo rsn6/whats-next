@@ -1,0 +1,176 @@
+/*  General/Background/Sizing  */
+i.icon.film {
+	font-size: 2em;
+}
+
+strong {
+	font-weight:900;
+}
+
+body {
+	font-family: 'Quicksand', sans-serif;
+}
+
+#mainDiv {
+	background: #e8e8e8;
+}
+
+.column {
+	max-width: 450px;
+}
+
+.ui.segment {
+	margin:1em 0.5em;
+	
+}
+
+#episode {
+	margin:auto;
+	margin-bottom: 1em;
+	width:70%;
+	overflow:auto;
+}
+
+
+/*  Images  */
+#thumbnail {
+	float:left;
+	padding-right:1em;	
+}
+
+#img {
+	border:1px solid black;
+}
+
+
+/*  Menus/Login Page  */
+#log {
+	padding-top:5em;
+}
+
+#sidebarMenu {
+	background-color:black;
+}
+
+.top.menu {
+	margin-top: 0em;
+	border-radius: 0;
+	border: none;
+	box-shadow: none;
+	transition:
+	box-shadow 0.5s ease,
+	padding 0.5s ease;
+}
+
+.secondary.menu {
+	display: none !important ;
+}
+
+#gettingStarted {
+	padding-top:5em;
+}
+
+#mobileTitle {
+	padding-top:1em;
+}
+
+#mobileResults {
+	padding-left:15em;
+}
+
+
+/*  Series/Search Results  */
+#accordion {
+	margin-bottom:0.5em;
+}
+
+#seriesInfo {
+	font-size:1.2em;
+	padding-bottom:1em;
+}
+
+#infoBtn {
+	float:left;
+}
+
+#addBtn {
+	float:right;
+}
+
+#overview {
+	padding-top:1.5em;
+}
+
+.title {
+	text-align:left; 
+}
+
+#seriesBanner {
+	padding-bottom:1.5em;
+}
+
+#epSeriesInfo {
+	padding-bottom:0.5em;
+}
+
+#seriesOverview {
+	margin:auto;
+	width:50%;
+}
+
+/*  Mobile  */
+@media only screen and (max-width: 700px) {
+  .ui.top.menu {
+    display: none !important;
+  }
+
+  .top.menu .item,
+  .top.menu .menu {
+    display: none;
+  }
+
+  .secondary.menu {
+    display: block !important;
+    margin: 0 0 0 0;
+  }
+
+  .ui.container {
+  	margin-left:0em !important;
+  }
+
+  #mobileTitle {
+  	padding-top:1em;
+  }
+
+  #mobileResults {
+  	padding-left:1em;
+  }
+
+  #episode {
+  	width:95%;
+  }
+
+  #thumbnail {
+  	float:none;
+  	margin-left:0;
+  	margin-right:auto;
+  	width:75%;
+  	padding-bottom:1em;
+  }
+
+  #log {
+  	padding-top:4em;
+  }
+
+  #seriesBanner {
+  	margin-left:auto;
+  	margin-right:auto;
+  }
+
+  #seriesOverview {
+	margin:auto;
+	width:95%;
+  }
+}
+
+

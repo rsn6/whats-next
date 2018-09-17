@@ -1,0 +1,76 @@
+<% include ./partials/header %>
+
+<div id="mobileTitle">
+	<h2><center><%= data["seriesName"] %></center></h2>
+</div>
+<% if(data["banner"] === '') { %>
+	<p><img id="img" class="ui centered medium image" src="/images/no_image.jpg"></p>
+<% } else { %>
+	<p><img id="img" class="ui centered big image" src="https://www.thetvdb.com/banners/<%= data["banner"] %>"/> </p>
+<% } %>
+
+<!-- General Series Information -->
+<div id="seriesInfo">
+	<center>
+	<p><strong>Status</strong> : <em><%=data["status"] %></em></p>
+	<p><strong>Airs</strong> : <%=data['airsDayOfWeek']%> - <%=data["airsTime"]%></p>
+	<p><strong>Channel/Network</strong> : <%= data["network"]%></p>
+	<p><strong>Rating</strong> : <%= data["rating"]%></p>
+	<div id="seriesOverview"><%- data["overview"] %></div>
+	</center>
+</div>
+
+<!-- Episode List/Summaries -->
+<center>
+<div id="accordion" class="ui styled accordion">
+	<% for(let i = 0; i < season.length; i++) { %>
+		<div class="title">
+			<i class="dropdown icon"></i>
+			<% if(season[i] === '0') { %>
+				Specials
+			<% } else if(season[0] === '1') { %>
+				Season <%= i + 1 %>
+			<% } else { %>
+				Season <%= i %>
+			<% } %>
+		</div>
+		<div class="content">
+			<p class="transition hidden">
+				<% for(let j = 0; j < data.episodes.length; j++) { %>
+					<% if((season[0] === '1') && (data.episodes[j]["airedSeason"] == i + 1)) { %>
+						<strong><p><%= data.episodes[j]["episodeName"]%></p></strong>
+						<% if(data.episodes[j]["filename"] === '') { %>
+							<img id="img" class="ui rounded small image" src="/images/no_image.jpg">
+						<% } else { %>
+							<img id="img" class="ui rounded medium image" src="https://www.thetvdb.com/banners/<%= data.episodes[j]["filename"] %>">
+						<% } %>
+						<br>
+						<% if(data.episodes[j]["overview"] === null) { %>
+							<p>No Description Available</p>
+						<% } else { %>
+							<p><%= data.episodes[j]["overview"]%></p>
+						<% } %>
+						<hr>
+					<% } else if((season[0] === '0') && (data.episodes[j]["airedSeason"] == i)) { %>
+							<strong><p><%= data.episodes[j]["episodeName"]%></p></strong>
+							<% if(data.episodes[j]["filename"] === '') { %>
+								<img id="img" class="ui rounded small image" src="/images/no_image.jpg">
+							<% } else { %>
+								<img id="img" class="ui rounded medium image" src="https://www.thetvdb.com/banners/<%= data.episodes[j]["filename"] %>">
+							<% } %>
+							<br>
+						<% if(data.episodes[j]["overview"] === null) { %>
+							<p>No Description Available</p>
+						<% } else { %>
+							<p><%= data.episodes[j]["overview"]%></p>
+						<% } %>
+							<hr>
+					<% } %>
+				<% } %>
+			</p>
+		</div>
+	<% } %>
+</div>
+</center>
+
+<% include ./partials/footer %>
